@@ -1,0 +1,28 @@
+<?php
+
+namespace App\Models;
+
+use Illuminate\Database\Eloquent\Factories\HasFactory;
+use Illuminate\Database\Eloquent\Model;
+
+class BahanBaku extends Model
+{
+    use HasFactory;
+    protected $table = 'bahan_bakus';
+    protected $fillable = ['nama_bahan', 'satuan', 'satuan_kecil', 'nilai_konversi', 'harga', 'stok', 'pemakaian_max', 'pemakaian_rata', 'lead_time'];
+
+    public function reseps()
+    {
+        return $this->hasMany(Resep::class);
+    }
+
+    public function stokMasuks()
+    {
+        return $this->hasMany(StokMasuk::class);
+    }
+
+    public function hasilEoqs()
+    {
+        return $this->hasMany(HasilEoq::class);
+    }
+}
